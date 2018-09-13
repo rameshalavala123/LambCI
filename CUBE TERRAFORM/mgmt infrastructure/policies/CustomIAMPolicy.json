@@ -1,0 +1,23 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "iam:GetAccountPasswordPolicy",
+                "iam:DeactivateMFADevice",
+                "iam:DeleteVirtualMFADevice",
+                "iam:EnableMFADevice",
+                "iam:ResyncMFADevice",
+                "iam:ListAccountAliases",
+                "iam:ListUsers",
+                "iam:CreateVirtualMFADevice",
+                "iam:ListMFADevices",
+                "iam:ListVirtualMFADevices",
+                "iam:GetAccountSummary"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

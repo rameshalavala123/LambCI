@@ -1,0 +1,19 @@
+output "role_arn" {
+  value = "${aws_iam_role.role.arn}"
+}
+
+output "role_name" {
+  value = "${aws_iam_role.role.name}"
+}
+
+output "instance_profile_arn" {
+  value = "${aws_iam_instance_profile.instance-profile.arn}"
+}
+
+output "instance_profile_id" {
+  value = "${aws_iam_instance_profile.instance-profile.id}"
+}
+
+output "instance_profile_name" {
+  value = "${aws_iam_instance_profile.instance-profile.name}"
+}

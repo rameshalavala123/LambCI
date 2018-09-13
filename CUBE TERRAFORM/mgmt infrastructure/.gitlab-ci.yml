@@ -1,0 +1,130 @@
+image: 647984316303.dkr.ecr.eu-central-1.amazonaws.com/terraform:0.9.8
+
+before_script:
+  - echo "$MODULES_REPO_DEPLOY_KEY" > modules_repo_key && chmod 600 modules_repo_key
+  - eval `ssh-agent`
+  - chmod +x ./build_scripts/provision.sh
+  - ssh-add modules_repo_key
+
+plan_dev:
+  stage: test
+  environment: dev
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh plan dev
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+destroy_dev:
+  stage: deploy
+  environment: dev
+  only: ["master"]
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh "destroy -force" dev
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+apply_dev:
+  stage: deploy
+  environment: dev
+  only: ["master"]
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh apply dev
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+
+plan_qa:
+  stage: test
+  environment: qa
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh plan qa
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+
+apply_qa:
+  stage: deploy
+  environment: qa
+  only: ["master"]
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh apply qa
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+destroy_qa:
+  stage: deploy
+  environment: qa
+  only: ["master"]
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh "destroy -force" qa
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+
+
+plan_test:
+  stage: test
+  environment: test
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh plan test
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+
+apply_test:
+  stage: deploy
+  environment: test
+  only: ["master"]
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh apply test
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+destroy_test:
+  stage: deploy
+  environment: test
+  only: ["master"]
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh "destroy -force" test
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+
+plan_prod:
+  stage: test
+  environment: prod
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh plan prod
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+
+apply_prod:
+  stage: deploy
+  environment: prod
+  only: ["master"]
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh apply prod
+  tags:
+    - msp-catalyst-preprod-provisioner
+
+destroy_prod:
+  stage: deploy
+  environment: prod
+  only: ["master"]
+  when: "manual"
+  script:
+    - ./build_scripts/provision.sh "destroy -force" prod
+  tags:
+    - msp-catalyst-preprod-provisioner
