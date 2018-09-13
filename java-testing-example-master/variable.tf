@@ -33,6 +33,3 @@ variable "healthy_threshold" {
 variable "unhealthy_threshold" {
   default = "5"
 }
-variable "interval" {
-  default = "10"
-}
