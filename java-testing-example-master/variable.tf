@@ -32,4 +32,6 @@ variable "healthy_threshold" {
 }
 variable "unhealthy_threshold" {
   default = "5"
+}variable "u" {
+  default = "5"
 }
