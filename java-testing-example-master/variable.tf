@@ -31,5 +31,5 @@ variable "healthy_threshold" {
   default = "5"
 }
 variable "healthy" {
-  default = "50"
+  default = "500"
 }
