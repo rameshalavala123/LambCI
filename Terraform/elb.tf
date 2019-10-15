@@ -62,4 +62,5 @@ resource "aws_instance" "lb" {
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  
 }*/
