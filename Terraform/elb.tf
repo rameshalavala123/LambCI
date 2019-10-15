@@ -53,6 +53,7 @@ resource "aws_instance" "lb" {
     tags {
     Name = "ELB"
   }
+  
 }
 /*resource "aws_security_group" "ELBSecurityGroup" {
   name = "ELBSecurityGroup1"
